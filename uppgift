@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Form File</title>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data">
+    <label for="förnamn">Förnamn:</label>
+    <input type="text" id="förnamn" name="förnamn" required><br><br>
+
+    <label for="efternamn">Efternamn:</label>
+    <input type="text" id="efternamn" name="efternamn" required><br><br>
+
+    <label for="födelsedatum">Födelsedatum:</label>
+    <input type="date" id="födelsedatum" name="födelsedatum" required><br><br>
+
+    <label for="bild">Bild:</label>
+    <input type="file" id="bild" name="bild" accept="image/*" required><br><br>
+
+    <input type="submit" value="Show">
+</form>
+
+<?php
+if (!empty($_POST)) {
+    // Hämta värdet för varje fält från formuläret
+    $förnamn = $_POST['förnamn'];
+    $efternamn = $_POST['efternamn'];
+    $födelsedatum = $_POST['födelsedatum'];
+    $bild = $_FILES['bild']['name'];
+
+    // Visa de inskickade uppgifterna
+    echo "<div class='result'>";
+    echo "<p>$förnamn</p>";
+    echo "<p>$efternamn</p>";
+    echo "<p>$födelsedatum</p>";
+    echo "<p>$bild</p>";
+    echo "</div>";
+}
+?>
+</body>
+</html>
+
+//CSS
+
+*{
+    font-family: 'Times New Roman', Times, serif;
+ }
+ 
+ body{
+     display: flex;
+     flex-direction: column;
+     justify-content: space-evenly;
+     min-height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 100vh;
+     margin: 0;
+ }
+ 
+ .container {
+     width: 15%;
+     margin: 0 auto;
+     padding: 28px;
+     border: 1px solid black;
+     border-radius: 5px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+   }
+ 
